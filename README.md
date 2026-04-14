@@ -36,27 +36,6 @@ The application includes:
 
 ---
 
-## Project Structure
-peage_optimization/
-├── src/
-│ └── dijkstra_peage.cpp # Main C++ application (algorithm + UI)
-│
-├── scripts/
-│ └── extract_area_classe1.py # Extract data from PDF → CSV
-│
-├── data/
-│ ├── tarifs_area.csv # Processed dataset used by C++
-│ └── TARIF_AREA.pdf # Original data source
-│
-├── docs/ # (optional / unused)
-│
-├── README.md
-├── readme.txt # legacy file
-├── .gitignore
-└── .gitattributes
-
----
-
 ## Data Pipeline
 
 The project follows a simple pipeline:
@@ -71,7 +50,4 @@ The project follows a simple pipeline:
 
 ## Build
 
-### Windows (MSVC)
-
-```bash
-cl /std:c++17 /O2 src\dijkstra_peage.cpp user32.lib gdi32.lib
+g++ -std=c++17 -O2 -municode -mwindows src\dijkstra_peage.cpp -o dijkstra_peage.exe -lgdi32 -luser32
