@@ -4,8 +4,8 @@ from pathlib import Path
 import pandas as pd
 import pdfplumber
 
-PDF_PATH = Path("TARIF_AREA.pdf")
-OUT_CSV = Path("tarifs_area.csv")
+PDF_PATH = Path("data/TARIF_AREA.pdf")
+OUT_CSV = Path("data/tarifs_area.csv")
 
 # --- Helpers ---
 RE_CODE = re.compile(r"^\d{3,6}$")        # codes gares (ex 3007, 15018, 3400)

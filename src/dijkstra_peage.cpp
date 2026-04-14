@@ -17,7 +17,7 @@
 #include <cstring>
 
 // ===================== Config =====================
-static const char*  CSV_PATH = "tarifs_area.csv"; // CSV with distance_km
+static const char*  CSV_PATH = "data/tarifs_area.csv"; // CSV with distance_km
 static const int    DEFAULT_TOP_K = 5;            // (old) Yen K options
 static const double PROGRESS_EPS_KM = 0.01;       // marge "rem[v] < rem[u]"
 static const bool   ENABLE_PROGRESS_FILTER = true;// Option C
@@ -409,10 +409,12 @@ static std::string json_escape(const std::string& s) {
     return out;
 }
 
-static bool write_utf8_file(const std::wstring& path, const std::string& content) {
-    std::ofstream out(path, std::ios::binary);
-    if (!out) return false;
-    out.write(content.data(), (std::streamsize)content.size());
+bool write_utf8_file(const std::wstring& path, const std::string& content) {
+    FILE* f = _wfopen(path.c_str(), L"wb");
+    if (!f) return false;
+
+    fwrite(content.data(), 1, content.size(), f);
+    fclose(f);
     return true;
 }
 
